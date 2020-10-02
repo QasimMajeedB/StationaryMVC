@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8404469ac564b3cbd2d8cb5da37cf24" Name="Diagram1">
+        <EntityTypeShape EntityType="web_stationaryModel.question_answers" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_admin" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_notification" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_product" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_stationaryRequest" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_stock" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="web_stationaryModel.tbl_user" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="web_stationaryModel.FK__tbl_user__r_id__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="web_stationaryModel.FK__tbl_stati__user___37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="web_stationaryModel.FK__tbl_statio__s_id__36B12243" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="web_stationaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="question_answers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="messages" Type="nvarchar(max)" />
+          <Property Name="froms" Type="nvarchar(max)" />
+          <Property Name="tos" Type="nvarchar(max)" />
+          <Property Name="dates" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_email" Type="nvarchar(max)" />
+          <Property Name="a_password" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_notification">
+          <Key>
+            <PropertyRef Name="not_id" />
+          </Key>
+          <Property Name="not_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="not_action" Type="nvarchar(max)" />
+          <Property Name="not_date" Type="date" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="p_name" Type="nvarchar(max)" />
+          <Property Name="p_price" Type="float" />
+          <Property Name="p_qty" Type="float" />
+          <Property Name="p_date" Type="date" />
+          <Property Name="p_des" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_role">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_type" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_stationaryRequest">
+          <Key>
+            <PropertyRef Name="st_reqid" />
+          </Key>
+          <Property Name="st_reqid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="s_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="item_name" Type="nvarchar(max)" />
+          <Property Name="req_qty" Type="float" />
+          <Property Name="req_totalprice" Type="float" />
+          <Property Name="request_date" Type="date" />
+          <Property Name="approvecancel_date" Type="date" />
+          <Property Name="req_status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_stock">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="s_name" Type="nvarchar(max)" />
+          <Property Name="s_price" Type="float" />
+          <Property Name="s_qty" Type="float" />
+          <Property Name="s_date" Type="date" />
+          <Property Name="s_des" Type="nvarchar(max)" />
+          <Property Name="s_status" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_name" Type="nvarchar(max)" />
+          <Property Name="u_email" Type="nvarchar(max)" />
+          <Property Name="u_pass" Type="nvarchar(max)" />
+          <Property Name="u_grade" Type="nvarchar(max)" />
+          <Property Name="u_registernumber" Type="nvarchar(max)" />
+          <Property Name="u_location" Type="nvarchar(max)" />
+          <Property Name="r_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__tbl_stati__user___3B75D760">
+          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_stationaryRequest" Type="Self.tbl_stationaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="u_id" />
+            </Principal>
+            <Dependent Role="tbl_stationaryRequest">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_statio__s_id__3A81B327">
+          <End Role="tbl_stock" Type="Self.tbl_stock" Multiplicity="0..1" />
+          <End Role="tbl_stationaryRequest" Type="Self.tbl_stationaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_stock">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="tbl_stationaryRequest">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_user__r_id__1B0907CE">
+          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
+          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_role">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="tbl_user">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="web_stationaryModelStoreContainer">
+          <EntitySet Name="question_answers" EntityType="Self.question_answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_notification" EntityType="Self.tbl_notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_role" EntityType="Self.tbl_role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_stationaryRequest" EntityType="Self.tbl_stationaryRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_stock" EntityType="Self.tbl_stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbl_stati__user___3B75D760" Association="Self.FK__tbl_stati__user___3B75D760">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_stationaryRequest" EntitySet="tbl_stationaryRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_statio__s_id__3A81B327" Association="Self.FK__tbl_statio__s_id__3A81B327">
+            <End Role="tbl_stock" EntitySet="tbl_stock" />
+            <End Role="tbl_stationaryRequest" EntitySet="tbl_stationaryRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_user__r_id__1B0907CE" Association="Self.FK__tbl_user__r_id__1B0907CE">
+            <End Role="tbl_role" EntitySet="tbl_role" />
+            <End Role="tbl_user" EntitySet="tbl_user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="web_stationaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="question_answers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="messages" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="froms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dates" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tbl_admin">
+          <Key>
+            <PropertyRef Name="a_id" />
+          </Key>
+          <Property Name="a_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="a_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_notification">
+          <Key>
+            <PropertyRef Name="not_id" />
+          </Key>
+          <Property Name="not_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="not_action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="not_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tbl_product">
+          <Key>
+            <PropertyRef Name="p_id" />
+          </Key>
+          <Property Name="p_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="p_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="p_price" Type="Double" />
+          <Property Name="p_qty" Type="Double" />
+          <Property Name="p_date" Type="DateTime" Precision="0" />
+          <Property Name="p_des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_role">
+          <Key>
+            <PropertyRef Name="r_id" />
+          </Key>
+          <Property Name="r_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_user__r_id__1B0907CE" FromRole="tbl_role" ToRole="tbl_user" />
+        </EntityType>
+        <EntityType Name="tbl_stationaryRequest">
+          <Key>
+            <PropertyRef Name="st_reqid" />
+          </Key>
+          <Property Name="st_reqid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="s_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="item_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="req_qty" Type="Double" />
+          <Property Name="req_totalprice" Type="Double" />
+          <Property Name="request_date" Type="DateTime" Precision="0" />
+          <Property Name="req_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_stati__user___37A5467C" FromRole="tbl_stationaryRequest" ToRole="tbl_user" />
+          <NavigationProperty Name="tbl_stock" Relationship="Self.FK__tbl_statio__s_id__36B12243" FromRole="tbl_stationaryRequest" ToRole="tbl_stock" />
+          <Property Name="approvecancel_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tbl_stock">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="s_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="s_price" Type="Double" />
+          <Property Name="s_qty" Type="Double" />
+          <Property Name="s_date" Type="DateTime" Precision="0" />
+          <Property Name="s_des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="s_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_stationaryRequest" Relationship="Self.FK__tbl_statio__s_id__36B12243" FromRole="tbl_stock" ToRole="tbl_stationaryRequest" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="u_id" />
+          </Key>
+          <Property Name="u_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="u_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="u_pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="u_grade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="u_registernumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="u_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="r_id" Type="Int32" />
+          <NavigationProperty Name="tbl_role" Relationship="Self.FK__tbl_user__r_id__1B0907CE" FromRole="tbl_user" ToRole="tbl_role" />
+          <NavigationProperty Name="tbl_stationaryRequest" Relationship="Self.FK__tbl_stati__user___37A5467C" FromRole="tbl_user" ToRole="tbl_stationaryRequest" />
+        </EntityType>
+        <Association Name="FK__tbl_user__r_id__1B0907CE">
+          <End Role="tbl_role" Type="Self.tbl_role" Multiplicity="0..1" />
+          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_role">
+              <PropertyRef Name="r_id" />
+            </Principal>
+            <Dependent Role="tbl_user">
+              <PropertyRef Name="r_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_stati__user___37A5467C">
+          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
+          <End Role="tbl_stationaryRequest" Type="Self.tbl_stationaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_user">
+              <PropertyRef Name="u_id" />
+            </Principal>
+            <Dependent Role="tbl_stationaryRequest">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_statio__s_id__36B12243">
+          <End Role="tbl_stock" Type="Self.tbl_stock" Multiplicity="0..1" />
+          <End Role="tbl_stationaryRequest" Type="Self.tbl_stationaryRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_stock">
+              <PropertyRef Name="s_id" />
+            </Principal>
+            <Dependent Role="tbl_stationaryRequest">
+              <PropertyRef Name="s_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="web_stationaryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="question_answers" EntityType="Self.question_answers" />
+          <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
+          <EntitySet Name="tbl_notification" EntityType="Self.tbl_notification" />
+          <EntitySet Name="tbl_product" EntityType="Self.tbl_product" />
+          <EntitySet Name="tbl_role" EntityType="Self.tbl_role" />
+          <EntitySet Name="tbl_stationaryRequest" EntityType="Self.tbl_stationaryRequest" />
+          <EntitySet Name="tbl_stock" EntityType="Self.tbl_stock" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+          <AssociationSet Name="FK__tbl_user__r_id__1B0907CE" Association="Self.FK__tbl_user__r_id__1B0907CE">
+            <End Role="tbl_role" EntitySet="tbl_role" />
+            <End Role="tbl_user" EntitySet="tbl_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_stati__user___37A5467C" Association="Self.FK__tbl_stati__user___37A5467C">
+            <End Role="tbl_user" EntitySet="tbl_user" />
+            <End Role="tbl_stationaryRequest" EntitySet="tbl_stationaryRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_statio__s_id__36B12243" Association="Self.FK__tbl_statio__s_id__36B12243">
+            <End Role="tbl_stock" EntitySet="tbl_stock" />
+            <End Role="tbl_stationaryRequest" EntitySet="tbl_stationaryRequest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="web_stationaryModelStoreContainer" CdmEntityContainer="web_stationaryEntities">
+          <EntitySetMapping Name="question_answers">
+            <EntityTypeMapping TypeName="web_stationaryModel.question_answers">
+              <MappingFragment StoreEntitySet="question_answers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="messages" ColumnName="messages" />
+                <ScalarProperty Name="froms" ColumnName="froms" />
+                <ScalarProperty Name="tos" ColumnName="tos" />
+                <ScalarProperty Name="dates" ColumnName="dates" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_admin">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_admin">
+              <MappingFragment StoreEntitySet="tbl_admin">
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="a_email" ColumnName="a_email" />
+                <ScalarProperty Name="a_password" ColumnName="a_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_notification">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_notification">
+              <MappingFragment StoreEntitySet="tbl_notification">
+                <ScalarProperty Name="not_id" ColumnName="not_id" />
+                <ScalarProperty Name="not_action" ColumnName="not_action" />
+                <ScalarProperty Name="not_date" ColumnName="not_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_product">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_product">
+              <MappingFragment StoreEntitySet="tbl_product">
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="p_name" ColumnName="p_name" />
+                <ScalarProperty Name="p_price" ColumnName="p_price" />
+                <ScalarProperty Name="p_qty" ColumnName="p_qty" />
+                <ScalarProperty Name="p_date" ColumnName="p_date" />
+                <ScalarProperty Name="p_des" ColumnName="p_des" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_role">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_role">
+              <MappingFragment StoreEntitySet="tbl_role">
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+                <ScalarProperty Name="r_type" ColumnName="r_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_stationaryRequest">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_stationaryRequest">
+              <MappingFragment StoreEntitySet="tbl_stationaryRequest">
+                <ScalarProperty Name="approvecancel_date" ColumnName="approvecancel_date" />
+                <ScalarProperty Name="st_reqid" ColumnName="st_reqid" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="req_qty" ColumnName="req_qty" />
+                <ScalarProperty Name="req_totalprice" ColumnName="req_totalprice" />
+                <ScalarProperty Name="request_date" ColumnName="request_date" />
+                <ScalarProperty Name="req_status" ColumnName="req_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_stock">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_stock">
+              <MappingFragment StoreEntitySet="tbl_stock">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="s_price" ColumnName="s_price" />
+                <ScalarProperty Name="s_qty" ColumnName="s_qty" />
+                <ScalarProperty Name="s_date" ColumnName="s_date" />
+                <ScalarProperty Name="s_des" ColumnName="s_des" />
+                <ScalarProperty Name="s_status" ColumnName="s_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="web_stationaryModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_email" ColumnName="u_email" />
+                <ScalarProperty Name="u_pass" ColumnName="u_pass" />
+                <ScalarProperty Name="u_grade" ColumnName="u_grade" />
+                <ScalarProperty Name="u_registernumber" ColumnName="u_registernumber" />
+                <ScalarProperty Name="u_location" ColumnName="u_location" />
+                <ScalarProperty Name="r_id" ColumnName="r_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

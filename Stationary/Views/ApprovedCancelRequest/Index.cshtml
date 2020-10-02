@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Stationary.Models.tbl_stationaryRequest>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.item_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.req_qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.req_totalprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.request_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.req_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_user.u_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_stock.s_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.item_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.req_qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.req_totalprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.request_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.req_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_user.u_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_stock.s_name)
+        </td>
+        <td>
+            @Html.ActionLink("Approved","Approved",new{uid=item.st_reqid,sid=item.s_id,qty=item.req_qty}) |
+            @Html.ActionLink("Cancel", "Cancel", new { uid = item.st_reqid, sid = item.s_id,qty=item.req_qty }) |
+        </td>
+    </tr>
+}
+
+</table>

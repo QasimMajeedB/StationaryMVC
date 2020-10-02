@@ -1,0 +1,36 @@
+﻿@model List<Stationary.Models.tbl_stationaryRequest>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table border="1" class="table">
+    <tr>
+        <td>Employee Name</td>
+        <td>Item Name</td>
+        <td>Item qty</td>
+        <td>Status</td>
+        <td>Date</td>
+        <td>Grand</td>
+        <td>User item head count</td>
+    </tr>
+   
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td>@item.tbl_user.u_name</td>
+                <td>@item.item_name</td>
+                <td>@item.req_qty</td>
+                <td>@item.req_status</td>
+                <td>@item.request_date</td>
+                <td>@ViewBag.ss</td>
+               
+            </tr>
+        }
+
+            
+</table>

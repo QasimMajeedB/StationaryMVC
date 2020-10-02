@@ -1,0 +1,75 @@
+﻿@model Stationary.Models.tbl_user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.u_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_registernumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_registernumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.u_location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.u_location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_role.r_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_role.r_type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.u_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

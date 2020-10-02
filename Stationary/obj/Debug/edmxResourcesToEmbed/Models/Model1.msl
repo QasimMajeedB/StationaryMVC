@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="web_stationaryModelStoreContainer" CdmEntityContainer="web_stationaryEntities">
+    <EntitySetMapping Name="question_answers">
+      <EntityTypeMapping TypeName="web_stationaryModel.question_answers">
+        <MappingFragment StoreEntitySet="question_answers">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="messages" ColumnName="messages" />
+          <ScalarProperty Name="froms" ColumnName="froms" />
+          <ScalarProperty Name="tos" ColumnName="tos" />
+          <ScalarProperty Name="dates" ColumnName="dates" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_admin">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_admin">
+        <MappingFragment StoreEntitySet="tbl_admin">
+          <ScalarProperty Name="a_id" ColumnName="a_id" />
+          <ScalarProperty Name="a_email" ColumnName="a_email" />
+          <ScalarProperty Name="a_password" ColumnName="a_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_notification">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_notification">
+        <MappingFragment StoreEntitySet="tbl_notification">
+          <ScalarProperty Name="not_id" ColumnName="not_id" />
+          <ScalarProperty Name="not_action" ColumnName="not_action" />
+          <ScalarProperty Name="not_date" ColumnName="not_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_product">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_product">
+        <MappingFragment StoreEntitySet="tbl_product">
+          <ScalarProperty Name="p_id" ColumnName="p_id" />
+          <ScalarProperty Name="p_name" ColumnName="p_name" />
+          <ScalarProperty Name="p_price" ColumnName="p_price" />
+          <ScalarProperty Name="p_qty" ColumnName="p_qty" />
+          <ScalarProperty Name="p_date" ColumnName="p_date" />
+          <ScalarProperty Name="p_des" ColumnName="p_des" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_role">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_role">
+        <MappingFragment StoreEntitySet="tbl_role">
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+          <ScalarProperty Name="r_type" ColumnName="r_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_stationaryRequest">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_stationaryRequest">
+        <MappingFragment StoreEntitySet="tbl_stationaryRequest">
+          <ScalarProperty Name="approvecancel_date" ColumnName="approvecancel_date" />
+          <ScalarProperty Name="st_reqid" ColumnName="st_reqid" />
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="req_qty" ColumnName="req_qty" />
+          <ScalarProperty Name="req_totalprice" ColumnName="req_totalprice" />
+          <ScalarProperty Name="request_date" ColumnName="request_date" />
+          <ScalarProperty Name="req_status" ColumnName="req_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_stock">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_stock">
+        <MappingFragment StoreEntitySet="tbl_stock">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="s_name" ColumnName="s_name" />
+          <ScalarProperty Name="s_price" ColumnName="s_price" />
+          <ScalarProperty Name="s_qty" ColumnName="s_qty" />
+          <ScalarProperty Name="s_date" ColumnName="s_date" />
+          <ScalarProperty Name="s_des" ColumnName="s_des" />
+          <ScalarProperty Name="s_status" ColumnName="s_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="web_stationaryModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="u_id" ColumnName="u_id" />
+          <ScalarProperty Name="u_name" ColumnName="u_name" />
+          <ScalarProperty Name="u_email" ColumnName="u_email" />
+          <ScalarProperty Name="u_pass" ColumnName="u_pass" />
+          <ScalarProperty Name="u_grade" ColumnName="u_grade" />
+          <ScalarProperty Name="u_registernumber" ColumnName="u_registernumber" />
+          <ScalarProperty Name="u_location" ColumnName="u_location" />
+          <ScalarProperty Name="r_id" ColumnName="r_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

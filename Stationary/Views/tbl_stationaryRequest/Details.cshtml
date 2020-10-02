@@ -1,0 +1,67 @@
+﻿@model Stationary.Models.tbl_stationaryRequest
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_stationaryRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.req_qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.req_qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.req_totalprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.req_totalprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.request_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.request_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.req_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.req_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_role.r_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_role.r_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_stock.s_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_stock.s_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.st_reqid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

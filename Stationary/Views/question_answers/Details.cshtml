@@ -1,0 +1,51 @@
+﻿@model Stationary.Models.question_answers
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>question_answers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.messages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.messages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.froms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.froms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dates)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dates)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

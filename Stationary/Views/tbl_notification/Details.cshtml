@@ -1,0 +1,35 @@
+﻿@model Stationary.Models.tbl_notification
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_notification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.not_action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.not_action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.not_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.not_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.not_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
